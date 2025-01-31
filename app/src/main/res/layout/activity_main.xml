@@ -6,15 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        >
     <com.google.android.material.button.MaterialButton
         android:id="@+id/circularButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:text="AC"
+        android:textSize="25sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:background="@drawable/btn_circle_orange"
         android:gravity="center"
-        android:text="Click"
+        android:padding="10dp"
         android:textColor="#FFFFFF"
         />
-
+    </GridLayout>
 </LinearLayout>
