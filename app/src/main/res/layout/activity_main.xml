@@ -6,7 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#FF252525">
+    android:background="#FF252525"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/txtvwEquation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text=""
+        android:textSize="35sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/inter"
+        android:gravity="end"
+        android:layout_margin="30dp"/>
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
