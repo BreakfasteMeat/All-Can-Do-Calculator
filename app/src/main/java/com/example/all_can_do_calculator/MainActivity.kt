@@ -8,7 +8,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
+//EXTENSION FUNCTIONS
+fun Char.isOp() : Boolean{
+    return this == '+' || this == '-' || this == '÷' || this == '×'
+}
+fun Char.opPrec() : Int{
+    when(this){
+        '÷' -> return 2
+        '×' -> return 2
+        '-' -> return 1
+        '+' -> return 1
+    }
+    return -1
+}
 class MainActivity : AppCompatActivity(){
+    val mainCalculator : MainCalculator = MainCalculator()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -42,23 +56,53 @@ class MainActivity : AppCompatActivity(){
 
         findViewById<Button>(R.id.btnBackspace).setOnClickListener{
             if(textView.text.toString().isNotEmpty())
-            textView.text = textView.text.toString().substring(0,textView.text.toString().length - 1)
+                textView.text = textView.text.toString().substring(0,textView.text.toString().length - 1)
         }
         findViewById<Button>(R.id.btnDiv).setOnClickListener{
+            if(textView.text.toString().last() == '.')
+                textView.text = textView.text.toString().substring(0,textView.text.toString().length - 1)
             textView.append("÷")
         }
         findViewById<Button>(R.id.btnMin).setOnClickListener{
+            if(textView.text.toString().last() == '.')
+                textView.text = textView.text.toString().substring(0,textView.text.toString().length - 1)
             textView.append("-")
         }
         findViewById<Button>(R.id.btnMul).setOnClickListener{
+            if(textView.text.toString().last() == '.')
+                textView.text = textView.text.toString().substring(0,textView.text.toString().length - 1)
             textView.append("×")
         }
-        //TODO("CREATE ADD BUTTON")
-        //findViewById<Button>(R.id.btnAllClear).setOnClickListener{
-        //    textView.text = ""
-        //}
-        findViewById<Button>(R.id.btnAllClear).setOnClickListener{
-            textView.text = ""
+        findViewById<Button>(R.id.btnAdd).setOnClickListener{
+            if(textView.text.toString().last() == '.')
+                textView.text = textView.text.toString().substring(0,textView.text.toString().length - 1)
+            textView.append("+")
+        }
+        findViewById<Button>(R.id.btn0).setOnClickListener{
+            textView.append("0")
+        }
+        findViewById<Button>(R.id.btn00).setOnClickListener{
+            textView.append("00")
+        }
+        findViewById<Button>(R.id.btnDecPoint).setOnClickListener{
+                for(chr in textView.text.toString().reversed()){
+                    if(chr == '.') {
+                        return@setOnClickListener
+                    }
+                    if(chr.isOp()){
+                        break
+                    }
+                }
+                textView.append(".")
+        }
+        findViewById<Button>(R.id.btnEquals).setOnClickListener {
+            if(textView.text.toString().isEmpty()) return@setOnClickListener
+            mainCalculator.input = textView.text.toString()
+            mainCalculator.calculate()
+            textView.text = mainCalculator.result
+        }
+        findViewById<Button>(R.id.btnAllClear).setOnClickListener {
+            textView.setText("")
         }
     }
 
