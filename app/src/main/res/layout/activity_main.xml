@@ -12,13 +12,13 @@
         android:id="@+id/txtvwEquation"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text=""
+        android:text="123"
         android:textSize="35sp"
         android:textColor="@color/white"
         android:fontFamily="@font/inter"
         android:gravity="end"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="200dp"/>
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
