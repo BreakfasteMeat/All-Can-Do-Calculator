@@ -104,6 +104,12 @@ class MainActivity : AppCompatActivity(){
         findViewById<Button>(R.id.btnAllClear).setOnClickListener {
             textView.setText("")
         }
+        findViewById<Button>(R.id.btnOpenPar).setOnClickListener {
+            textView.append("(")
+        }
+        findViewById<Button>(R.id.btnClosePar).setOnClickListener {
+            textView.append(")")
+        }
     }
 
 }

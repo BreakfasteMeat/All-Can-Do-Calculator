@@ -62,7 +62,7 @@ class MainCalculator {
             return
         }
         val res : BigDecimal = st.pop().toBigDecimal().stripTrailingZeros()
-        val formattedRes = if(res.precision() >= 10){
+        val formattedRes = if(res.abs() >= BigDecimal("1E10")){
             DecimalFormat("0.#####E0").format(res)
         } else {
             res.toPlainString()
