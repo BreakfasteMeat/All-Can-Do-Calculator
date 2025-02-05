@@ -2,12 +2,22 @@ package com.example.all_can_do_calculator
 
 import java.math.*
 import java.text.DecimalFormat
+import java.util.LinkedList
 import java.util.Stack
 
 class MainCalculator {
-    public lateinit var input : String
-    public lateinit var result : String
+    lateinit var input : String
+    lateinit var result : String
+    var history : LinkedList<String> = LinkedList()
+    var isError : Boolean = false
 
+    fun addToHistory(){
+        println(input + " = " + result)
+        if(!isError){
+            history.add(input + " = " + result)
+            if(history.size >= 7) history.removeFirst()
+        }
+    }
     fun toStringList() : ArrayList<String>{
         val sBldr = StringBuilder()
         var ret = ArrayList<String>()
@@ -38,29 +48,33 @@ class MainCalculator {
     fun calculate(){
         val postfix = infixToPostfix(toStringList())
         val st = Stack<String>()
-        try {
-            for (str in postfix) {
-                if (str.first().isDigit()) {
-                    st.push(str)
-                } else if (str.first().isOp()) {
-                    val b = st.pop().toBigDecimal()
-                    val a = st.pop().toBigDecimal()
-                    val precision = 10
-                    val roundingMode = RoundingMode.HALF_UP
-                    var res = BigDecimal.ZERO
-                    when (str.first()) {
-                        '+' -> res = a + b
-                        '-' -> res = a - b
-                        '÷' -> res = a.divide(b,precision,roundingMode)
-                        '×' -> res = a * b
+        for (str in postfix) {
+            if (str.first().isDigit()) {
+                st.push(str)
+            } else if (str.first().isOp()) {
+                val b = st.pop().toBigDecimal()
+                val a = st.pop().toBigDecimal()
+                val precision = 10
+                val roundingMode = RoundingMode.HALF_UP
+                var res = BigDecimal.ZERO
+                when (str.first()) {
+                    '+' -> res = a + b
+                    '-' -> res = a - b
+                    '÷' -> {
+                        try {
+                            res = a.divide(b,precision,roundingMode)
+                        } catch (e : ArithmeticException){
+                            result = "Can't Divide by Zero"
+                            isError = true
+                            return
+                        }
                     }
-                    st.push(res.toString())
+                    '×' -> res = a * b
                 }
+                st.push(res.toString())
             }
-        } catch (e : Exception){
-            result = "SOMETHING WENT HORRIBLY WRONG"
-            return
         }
+
         val res : BigDecimal = st.pop().toBigDecimal().stripTrailingZeros()
         val formattedRes = if(res.abs() >= BigDecimal("1E10")){
             DecimalFormat("0.#####E0").format(res)
