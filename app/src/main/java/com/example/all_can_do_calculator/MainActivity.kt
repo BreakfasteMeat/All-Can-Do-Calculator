@@ -10,10 +10,11 @@ import androidx.core.view.WindowInsetsCompat
 
 //EXTENSION FUNCTIONS
 fun Char.isOp() : Boolean{
-    return this == '+' || this == '-' || this == '÷' || this == '×'
+    return this == '+' || this == '-' || this == '÷' || this == '×' || this == '^'
 }
 fun Char.opPrec() : Int{
     when(this){
+        '^' -> return 3
         '÷' -> return 2
         '×' -> return 2
         '-' -> return 1

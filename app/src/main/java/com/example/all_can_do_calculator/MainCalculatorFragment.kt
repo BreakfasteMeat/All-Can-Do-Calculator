@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import org.w3c.dom.Text
+import java.math.BigDecimal
+import java.util.LinkedList
 
 class MainCalculatorFragment : Fragment(R.layout.fragment_main_calculator) {
 
@@ -120,8 +122,25 @@ class MainCalculatorFragment : Fragment(R.layout.fragment_main_calculator) {
             updateText(txtvwEquation,"(")
         }
         view.findViewById<Button>(R.id.btnClosePar).setOnClickListener {
-
             updateText(txtvwEquation,")")
+        }
+        view.findViewById<Button>(R.id.btnPercent).setOnClickListener{
+            var num = ""
+            var ctr = 0
+            for(chr in txtvwEquation.text.toString().reversed()){
+                if(chr.isOp() || chr == '(' || chr == ')') break;
+                ctr++
+                num = chr.toString() + num
+            }
+
+            var number = num.toBigDecimal()
+            number = number.multiply(BigDecimal("0.01"))
+            txtvwEquation.text = txtvwEquation.text.toString().substring(0,txtvwEquation.text.toString().length - ctr)
+            println(number)
+            updateText(txtvwEquation,number.toString())
+        }
+        view.findViewById<Button>(R.id.btnExponent).setOnClickListener{
+            updateText(txtvwEquation,"^")
         }
     }
     private fun updateText(textView : TextView, string : String) {

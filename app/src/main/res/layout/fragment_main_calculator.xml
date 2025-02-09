@@ -37,23 +37,25 @@
         android:gravity="end"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/grdButtons"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/gridButtons"
+        />
+
+
+
     <GridLayout
-        android:id="@+id/grdButtons"
+        android:id="@+id/gridButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="4"
-        android:layout_marginBottom="30dp"
-        android:useDefaultMargins="false"
-        android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="60dp"
+        android:columnCount="4"
+        android:useDefaultMargins="true"
+        android:gravity="center"
+        android:layout_gravity="center"
         >
-
-
-
         <Button
             android:id="@+id/btnAllClear"
             android:text="AC"
@@ -61,7 +63,7 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_secondary"
+            android:background="@drawable/btn_secondary"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FF000000"
@@ -72,12 +74,12 @@
 
         <Button
             android:id="@+id/btnChangeSign"
-            android:text="+/-"
+            android:text="√"
             android:textSize="35sp"
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_secondary"
+            android:background="@drawable/btn_secondary"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FF000000"
@@ -92,7 +94,7 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_secondary"
+            android:background="@drawable/btn_secondary"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FF000000"
@@ -101,22 +103,92 @@
             android:layout_margin="5dp"
             />
 
+        <!--2ND ROW-->
         <Button
             android:id="@+id/btnBackspace"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_secondary"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/inter"
+            android:gravity="center"
+            android:padding="10dp"
             android:text="⌫"
+            android:textColor="#FF000000"
+            android:textSize="35sp"
+            android:layout_gravity="center"
+            android:includeFontPadding="false"
+            />
+        <Button
+            android:id="@+id/btnExponent"
+            android:text="@string/btn_exponent"
             android:textSize="35sp"
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_secondary"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
-            android:textColor="#FF000000"
+            android:textColor="#FFFFFFFF"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_margin="5dp"
+            android:textAllCaps="false"
+            />
+
+        <Button
+            android:id="@+id/btnOpenPar"
+            android:text="("
+            android:textSize="35sp"
+            android:fontFamily="@font/inter"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/btn_main"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="#FFFFFFFF"
             android:focusable="true"
             android:clickable="true"
             android:layout_margin="5dp"
             />
-        <!--2ND ROW-->
+        <Button
+            android:id="@+id/btnClosePar"
+            android:text=")"
+            android:textSize="35sp"
+            android:fontFamily="@font/inter"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/btn_main"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="#FFFFFFFF"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_margin="5dp"
+            />
+
+
+
+        <Button
+            android:id="@+id/btnDiv"
+            android:text="÷"
+            android:textSize="50sp"
+            android:fontFamily="@font/inter"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/btn_operators"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="#FFFFFFFF"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_gravity="center"
+            android:includeFontPadding="false"
+            android:layout_margin="5dp"
+            />
+        <!--3RD ROW-->
         <Button
             android:id="@+id/btn7"
             android:text="7"
@@ -124,7 +196,7 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -140,7 +212,7 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -155,23 +227,25 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
             android:focusable="true"
             android:clickable="true"
+            android:layout_gravity="center"
             android:layout_margin="5dp"
             />
 
+
         <Button
-            android:id="@+id/btnDiv"
-            android:text="÷"
+            android:id="@+id/btnMul"
+            android:text="×"
             android:textSize="50sp"
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_orange"
+            android:background="@drawable/btn_operators"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -181,8 +255,8 @@
             android:includeFontPadding="false"
             android:layout_margin="5dp"
             />
-        <!--3RD ROW-->
 
+        <!--4TH ROW-->
         <Button
             android:id="@+id/btn4"
             android:text="4"
@@ -190,7 +264,7 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -206,7 +280,7 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -221,7 +295,7 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -230,14 +304,15 @@
             android:layout_margin="5dp"
             />
 
+
         <Button
-            android:id="@+id/btnMul"
-            android:text="×"
+            android:id="@+id/btnMin"
+            android:text="-"
             android:textSize="50sp"
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_orange"
+            android:background="@drawable/btn_operators"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -248,8 +323,7 @@
             android:layout_margin="5dp"
             />
 
-        <!--4TH ROW-->
-
+        <!--5TH ROW-->
         <Button
             android:id="@+id/btn1"
             android:text="1"
@@ -257,7 +331,7 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -273,7 +347,7 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -288,73 +362,7 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textColor="#FFFFFFFF"
-            android:focusable="true"
-            android:clickable="true"
-            android:layout_margin="5dp"
-            />
-
-        <Button
-            android:id="@+id/btnMin"
-            android:text="-"
-            android:textSize="50sp"
-            android:fontFamily="@font/inter"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:background="@drawable/btn_circle_orange"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textColor="#FFFFFFFF"
-            android:focusable="true"
-            android:clickable="true"
-            android:layout_gravity="center"
-            android:includeFontPadding="false"
-            android:layout_margin="5dp"
-            />
-
-        <!--5TH ROW-->
-        <Button
-            android:id="@+id/btn0"
-            android:text="0"
-            android:textSize="35sp"
-            android:fontFamily="@font/inter"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textColor="#FFFFFFFF"
-            android:focusable="true"
-            android:clickable="true"
-            android:layout_margin="5dp"
-            />
-
-        <Button
-            android:id="@+id/btn00"
-            android:text="00"
-            android:textSize="35sp"
-            android:fontFamily="@font/inter"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textColor="#FFFFFFFF"
-            android:focusable="true"
-            android:clickable="true"
-            android:layout_margin="5dp"
-            />
-        <Button
-            android:id="@+id/btnDecPoint"
-            android:text="."
-            android:textSize="35sp"
-            android:fontFamily="@font/inter"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -370,7 +378,7 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_orange"
+            android:background="@drawable/btn_operators"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -383,13 +391,13 @@
 
         <!--6TH ROW-->
         <Button
-            android:id="@+id/btnMore"
-            android:text="\?"
+            android:id="@+id/btn0"
+            android:text="0"
             android:textSize="35sp"
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -399,13 +407,13 @@
             />
 
         <Button
-            android:id="@+id/btnOpenPar"
-            android:text="("
+            android:id="@+id/btn00"
+            android:text="00"
             android:textSize="35sp"
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -414,13 +422,13 @@
             android:layout_margin="5dp"
             />
         <Button
-            android:id="@+id/btnClosePar"
-            android:text=")"
+            android:id="@+id/btnDecPoint"
+            android:text="."
             android:textSize="35sp"
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_main"
+            android:background="@drawable/btn_main"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -436,7 +444,7 @@
             android:fontFamily="@font/inter"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/btn_circle_orange"
+            android:background="@drawable/btn_operators"
             android:gravity="center"
             android:padding="10dp"
             android:textColor="#FFFFFFFF"
@@ -446,6 +454,6 @@
             android:includeFontPadding="false"
             android:layout_margin="5dp"
             />
+</GridLayout>
 
-    </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

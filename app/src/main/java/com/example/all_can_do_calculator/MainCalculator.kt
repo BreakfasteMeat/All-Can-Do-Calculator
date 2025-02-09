@@ -70,6 +70,7 @@ class MainCalculator {
                         }
                     }
                     '×' -> res = a * b
+                    '^' -> res = a.pow(b.toInt())
                 }
                 st.push(res.toString())
             }

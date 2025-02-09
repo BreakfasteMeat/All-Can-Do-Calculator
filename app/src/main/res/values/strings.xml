@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">All-Can-Do-Calculator</string>
+    <string name="btn_exponent">X<sup>y</sup></string>
 </resources>
