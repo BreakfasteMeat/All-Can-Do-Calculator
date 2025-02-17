@@ -7,4 +7,8 @@
         android:id="@+id/homeFragment"
         android:name="com.example.all_can_do_calculator.MainCalculatorFragment"
         android:label="Home" />
+    <fragment
+        android:id="@+id/converterFragment"
+        android:name="com.example.all_can_do_calculator.Converter"
+        android:label="Converter"/>
 </navigation>

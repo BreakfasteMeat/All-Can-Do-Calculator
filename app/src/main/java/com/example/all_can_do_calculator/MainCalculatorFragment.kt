@@ -3,9 +3,11 @@ package com.example.all_can_do_calculator
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.navigation.NavigationView
 import org.w3c.dom.Text
 import java.math.BigDecimal
 import java.util.LinkedList
@@ -16,9 +18,11 @@ class MainCalculatorFragment : Fragment(R.layout.fragment_main_calculator) {
     var calculatedResult : Boolean = false;
     lateinit var txtvwEquation : TextView;
     lateinit var txtvwRecentHistory : TextView
+    var navView : NavigationView? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btnAssignActions(view)
+        navView = activity?.findViewById(R.id.nav_view)
     }
 
     private fun updateRecentHistory(){
@@ -141,6 +145,11 @@ class MainCalculatorFragment : Fragment(R.layout.fragment_main_calculator) {
         }
         view.findViewById<Button>(R.id.btnExponent).setOnClickListener{
             updateText(txtvwEquation,"^")
+        }
+
+
+        view.findViewById<ImageButton>(R.id.imgbtnDrawerOpen).setOnClickListener {
+            navView?.visibility = if(navView?.visibility == View.VISIBLE) View.GONE else View.VISIBLE
         }
     }
     private fun updateText(textView : TextView, string : String) {
